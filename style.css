@@ -1,0 +1,16 @@
+body {
+  background-color: #000000;
+  color: #e0e0e0;
+
+  padding: 50px;
+}
+
+.title {
+  font-family: "Courier New", monospace;
+  font-size: 50px;
+}
+
+.centered {
+  text-align: center;
+  color: red;
+}

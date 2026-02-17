@@ -1,0 +1,122 @@
+/* =================================== 
+  1. BASE STYLES (Broadest)
+  Target: Tags only. Sets the default "Physics".
+   =================================== */
+
+body {
+  background-color: #000000; /* Sets background color to black */
+  color: #e0e0e0; /* Makes text readable on black background */
+  padding: 50px; /* Gives page some space from walls */
+  font-family: sans-serif; /* Good to set default font */
+}
+
+/* Global Link Styles */
+a {
+  color: #4da6ff; /* a bright, readable blue */
+  text-decoration: none; /* Removes the underline */
+}
+
+/* The States (Pseudo-classes) */
+a:hover,
+a:focus {
+  color: red; /* Turns red when the mouse hovers over it */
+  font-weight: bold; /* Turns bold on hover */
+  text-decoration: underline; /* Adds underline back on hover */
+  cursor: grab; /* Changes the mouse cursor icon when hovered over link */
+}
+
+/* =================================== 
+  2. LAYOUT (The Skeleton)
+  Target: Major regions and grid systems.
+   =================================== */
+
+/* Parent First: The Flex Container */
+.content-wrapper {
+  display: flex; /* Make main and aside side bar into columns that sit on same line */
+  gap: 20px; /* Adds space between the columns */
+}
+
+/* Children Second: The Columns */
+
+/* Main Content (The Big Brother) */
+main {
+  flex: 3; /* Take 3 shares (parts) of space (75% width) */
+  background-color: #333; /* Visual cue for space taken up */
+  padding: 20px;
+}
+/* Sidebar Content (The Little Brother) */
+aside {
+  flex: 1; /* Take 1 share (part) of space (25% width) */
+  background-color: #222; /* Visual cue for space taken up */
+  padding: 20px;
+}
+
+/* =================================== 
+  3. COMPONENTS & UTILITIES (Specific)
+  Target: Classes. Overrides everything above.
+   =================================== */
+
+/* Component to stylize the main header */
+.main-header {
+  text-align: center;
+  background-color: black;
+  color: white;
+  padding: 10px;
+}
+
+/* Component to stylize the main footer */
+.main-footer {
+  text-align: center;
+  font-size: 18px;
+}
+
+.nav-list {
+  list-style: none; /* Eliminates the bullet points */
+  padding: 0; /* Eliminates the default indentation */
+  margin: 0; /* Eliminates the default top/bottom space */
+
+  /* Make child elements sit side-by-side */
+  gap: 20px;
+}
+
+/* Specific styliing for the title */
+.title {
+  font-family: "Courier New", monospace;
+  font-size: 50px;
+}
+
+/* Utility class to center text */
+.text-center {
+  text-align: center;
+}
+
+/* Utility class to center Flex Items */
+.flex-center {
+  display: flex; /* Set items to sit side-by-side horizontally */
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  gap: 20px;
+}
+
+/* Utility class to set color to red on anything */
+.red-color {
+  color: red;
+}
+
+/* =================================== 
+  4. MEDIA QUERIES (Responsiveness)
+  Target: specific screen sizes to override layout.
+   =================================== */
+
+/* Apply if the screen is 768px wide or LESS */
+@media (max-width: 768px) {
+  /* Target the Layout Wrapper */
+  .content-wrapper {
+    flex-direction: column; /* CHANGE: Stack them vertically instead of side-by-side */
+  }
+
+  /* Fix the Sidebar Order */
+  aside {
+    order: -1; /* Moves the sidebar to the TOP (above the main content) */
+  }
+}

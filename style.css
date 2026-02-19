@@ -1,35 +1,91 @@
 /* =================================== 
-  1. BASE STYLES (Broadest)
-  Target: Tags only. Sets the default "Physics".
+   GLOBAL RESETS
    =================================== */
+* {
+  /* 1. Keep padding INSIDE the width */
+  box-sizing: border-box;
 
+  /* 2. Eliminates the default browser spacing */
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================================
+   VARIABLES (DESIGN TOKENS)                 
+   ========================================= */
+:root {
+  /* COLORS Dark Emo/Scene Theme */
+  --bg-color: #0f0b15; /* Deepest Purple/Black */
+  --card-bg: #1a1625; /* Slightly Lighter Purple */
+  --text-main: #e0e0e0; /* Off-White */
+  --text-muted: #a09cb0; /* Muted Lavender/Gray */
+  --accent-color: #ff0055; /* Hot Pink/Red */
+
+  /* TYPOGRAPHY */
+  --font-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* SPACING & BORDERS */
+  --standard-radius: 8px; /* Smooths out the box corners */
+}
+
+/* =================================== 
+   1. BASE STYLES (Broadest)
+   Target: Tags only. Sets the default "Physics".
+   =================================== */
 body {
-  background-color: #000000; /* Sets background color to black */
-  color: #e0e0e0; /* Makes text readable on black background */
+  background-color: var(--bg-color); /* Sets background color to black */
+  color: var(--text-main); /* Makes text readable on black background */
   padding: 50px; /* Gives page some space from walls */
-  font-family: sans-serif; /* Good to set default font */
+  font-family: var(--font-main); /* Good to set default font */
+  line-height: 1.6; /* Makes text must easier to read */
+}
+
+/* Give heaidngs breathing room */
+h1,
+h2,
+h3 {
+  margin-top: 1.5em; /* Space above the heading */
+  margin-bottom: 0.5em; /* Space below the heading */
+}
+
+/* First heading should NOT have top space if it's at very top of a container */
+h1:first-child,
+h2:first-child,
+h3:first-child {
+  margin-top: 0;
+}
+
+/* Paragraph spacing */
+p {
+  margin-bottom: 1em; /* Full line of space after every paragraph */
+}
+
+/* Restore the lists */
+ul,
+ol {
+  margin-bottom: 1em; /* 1 line of space away from other elements */
+  padding: 2em; /* Pushes the bullets back inwards so you can see them */
 }
 
 /* Global Link Styles */
 a {
-  color: #4da6ff; /* a bright, readable blue */
+  color: var(--accent-color); /* a bright, readable blue */
   text-decoration: none; /* Removes the underline */
 }
 
 /* The States (Pseudo-classes) */
 a:hover,
 a:focus {
-  color: red; /* Turns red when the mouse hovers over it */
+  color: hsl(0, 100%, 30%); /* Turns red when the mouse hovers over it */
   font-weight: bold; /* Turns bold on hover */
   text-decoration: underline; /* Adds underline back on hover */
   cursor: grab; /* Changes the mouse cursor icon when hovered over link */
 }
 
 /* =================================== 
-  2. LAYOUT (The Skeleton)
-  Target: Major regions and grid systems.
+   2. LAYOUT (The Skeleton)
+   Target: Major regions and grid systems.
    =================================== */
-
 /* Parent First: The Flex Container */
 .content-wrapper {
   display: flex; /* Make main and aside side bar into columns that sit on same line */
@@ -41,21 +97,29 @@ a:focus {
 /* Main Content (The Big Brother) */
 main {
   flex: 3; /* Take 3 shares (parts) of space (75% width) */
-  background-color: #333; /* Visual cue for space taken up */
+  background-color: var(--card-bg); /* Visual cue for space taken up */
   padding: 20px;
+  border-radius: var(--standard-radius);
 }
 /* Sidebar Content (The Little Brother) */
 aside {
   flex: 1; /* Take 1 share (part) of space (25% width) */
-  background-color: #222; /* Visual cue for space taken up */
+  background-color: var(--card-bg); /* Visual cue for space taken up */
   padding: 20px;
+  border-radius: var(--standard-radius);
+}
+
+/* About Me Section */
+.about-me-container details {
+  background: var(--bg-color);
+  margin-bottom: 10px;
+  border-radius: var(--standard-radius);
 }
 
 /* =================================== 
   3. COMPONENTS & UTILITIES (Specific)
   Target: Classes. Overrides everything above.
    =================================== */
-
 /* Component to stylize the main header */
 .main-header {
   text-align: center;
@@ -107,7 +171,6 @@ aside {
   4. MEDIA QUERIES (Responsiveness)
   Target: specific screen sizes to override layout.
    =================================== */
-
 /* Apply if the screen is 768px wide or LESS */
 @media (max-width: 768px) {
   /* Target the Layout Wrapper */
